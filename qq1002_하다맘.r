@@ -47,8 +47,6 @@ locations <- function(input)
   }
   # 중심 다르고 다른크기 원
   
-  
-  
 }
 
 # body
