@@ -7,18 +7,6 @@ input <- matrix(x[-1], nrow=3, byrow=T)
 testcase <- 3
 input <- matrix(c(0, 0, 13, 40, 0, 37, 0, 0, 3, 0, 7, 4, 1, 1, 1, 1, 1, 5), nrow=3, byrow=T)
 
-# error check
-if(sum(as.integer(input) == input) != length(input))
-{
-  print("integer error!")
-} else if(sum(cbind(input[, 1], input[, 2], input[, 4], input[, 5]) > 10000 | cbind(input[, 1], input[, 2], input[, 4], input[, 5]) < -10000))
-{
-  print("x, y bound error!")
-} else if(sum(cbind(input[, 3], input[, 6]) > 10000 | cbind(input[, 3], input[, 6]) < 1))
-{
-  print("range bound error!")
-}
-
 # calculating function
 locations <- function(input)
 {
