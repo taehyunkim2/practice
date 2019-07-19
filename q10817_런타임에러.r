@@ -1,4 +1,6 @@
 input <- scan("stdin")
+input <- as.integer(input)
+options(digits=20)
 cat(max(input[-which.max(input)]))
 
 input <- c(20, 30, 10)
