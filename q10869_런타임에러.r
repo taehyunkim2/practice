@@ -1,5 +1,5 @@
 input <- scan("stdin")
-options(digits=10)
+options(scipen = 1000)
 result <- NA
 result[1] <- input[1] + input[2]
 result[2] <- input[1] - input[2]
