@@ -1,55 +1,29 @@
 input <- scan("stdin")
+options(scipen = 120)
 testcase <- input[1]
-input <- input[-1]
-rule1 <- list(NA)
-rule2 <- list(NA)
-win <- NA
-
-# 입력 분류
+cases <- input[-1]
+result <- NA
 for(i in 1:testcase)
 {
-  count1 <- input[1]
-  count2 <- input[2]
-  rule1[[i]] <- input[3:(2+count1)]
-  rule2[[i]] <- matrix(input[(3+count1):(2+count1+count2*2)], nrow=input[2], byrow=T)
-  win[i] <- input[(3+count1+count2*2)]
-  input <- input[-(1:(3+count1+count2*2))]
-}
-
-build2 <- function(rule1, rule2, win)
-{
-  flag <- list(rep(0, length(rule1)))
-  flagnumbers <- dummy <- 1
-  flag[[1]][win] <- 1
-  while(win > 1)
+  if(cases[i] == 0)
   {
-    flagnumbers <- dummy
-    for(j in 1:flagnumbers)
+    result[i] <- "1 0"
+  } else if(cases[i] == 1)
+  {
+    result[i] <- "0 1"
+  } else if(cases[i] == 2)
+  {
+    result[i] <- "1 1"
+  } else
+  {
+    p2 <- p1 <- 1
+    for(i in 3:cases[i])
     {
-      if(flag[[j]][win] == 1)
-      {
-        for(k in 1:length(rule2[, 1]))
-        {
-          if(rule2[k, 2] == win)
-          {
-            dummy <- dummy + 1
-            flag[[dummy]] <- flag[[j]]
-            flag[[dummy]][rule2[k, 1]] <- 1
-          }
-        }
-      }
+      c <- p1 + p2
+      p2 <- p1
+      p1 <- c
+      result[i] <- paste0(p2, " ", c)
     }
-    win <- win - 1
   }
-  dummy <- NA
-  for(i in 1:length(flag))
-  {
-    dummy[i] <- sum(flag[[i]] * rule1)
-  }
-  return(max(dummy))
 }
-for(i in  1:testcase)
-{
-  win[i] <- build2(rule1[[i]], rule2[[i]], win[i])
-}
-cat(win, sep="\n")
+cat(result, sep="\n")
