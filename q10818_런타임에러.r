@@ -1,6 +1,0 @@
-input <- scan("stdin")
-options(scipen = 10000000)
-y <- as.integer(input[-1])
-a <- min(y)
-b <- max(y)
-cat(a,b)

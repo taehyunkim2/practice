@@ -1,4 +1,5 @@
-input <- scan("stdin")
+fp=file("stdin", "r")
+input=scan(file=fp, what=character(0))
 testcase <- as.numeric(input[1])
 input <- input[-1]
 row1 <- col1 <- NA

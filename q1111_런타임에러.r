@@ -1,5 +1,7 @@
-input <- scan("stdin")
+fp <- file("stdin", "r")
+input <- scan(file=fp, what=numeric(0))
 options(scipen = 100)
+
 cal <- function(testcase, cases)
 {
   if(testcase == 1)

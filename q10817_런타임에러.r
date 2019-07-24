@@ -1,20 +1,12 @@
-input <- scan("stdin")
-input <- as.integer(input)
-options(digits=20)
-cat(max(input[-which.max(input)]))
+fp <- file("stdin", "r")
+input <- scan(file=fp, what=numeric(0))
+options(scipen = 100)
 
-input <- c(20, 30, 10)
-max1 <- max2 <- 0
-for(i in 1:length(input))
+cal <- function(input)
 {
-  if(input[i] > max1)
-  {
-    max1 <- input[i]
-  }
-  if(input[i] < max1 && input[i] > max2)
-  {
-    max2 <- input[i]
-  }
+  return(max(input[-which.max(input)]))
 }
-cat(max2)
-input <- c(1,1,1)
+
+cat(cal(input))
+
+input <- scan(what=numeric(0))
