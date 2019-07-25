@@ -17,3 +17,8 @@ while(x!=1)
 }
 cat(count)
 x <- 10
+
+log(153, base=2)
+log(153, base=3)
+log(9, base=3)
+  log(153)
