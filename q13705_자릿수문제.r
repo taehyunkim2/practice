@@ -1,4 +1,4 @@
-options(scipen = 100, digits=22)
+options(scipen = 100)
 fp <- file("stdin", "r")
 input <- scan(file=fp, what=numeric(0), n=3)
 
@@ -30,7 +30,7 @@ if(cal(x) == 0)
   alpha <- x-2
   beta <- x
   dummy <- beta-(beta-alpha)/2
-  error <- 10^(-10)
+  error <- 10^(-12)
   while((beta-alpha) > error)
   {
     if(cal(dummy) > 0)
@@ -46,5 +46,11 @@ if(cal(x) == 0)
       break
     }
   }
-    cat(round(dummy, digits=6))
+  if(dummy %% (10^(-6)))
+  {
+    cat(format(round(dummy, 6), nsmall = 6))
+  } else
+  {
+    cat(dummy)
+  }
 }
