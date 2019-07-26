@@ -1,12 +1,3 @@
-fp <- file("stdin", "r")
-input <- scan(file=fp, what=numeric(0))
 options(scipen = 100)
-
-cal <- function(input)
-{
-  return(max(input[-which.max(input)]))
-}
-
-cat(cal(input))
-
-input <- scan(what=numeric(0))
+fp <- file("stdin", "r")
+cat(sort(scan(file=fp, what=numeric(0), n=3))[2])
