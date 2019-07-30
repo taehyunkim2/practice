@@ -12,14 +12,9 @@ cal <- function(x)
       x <- x / 3
     } else if(x %% 2 == 0)
     {
-      if((x %% 4 != 0) && ((x-1)%% 3 == 0))
+      if( (x-1) %% 3 == 0)
       {
-        x <- (x-1) / 3
-        count <- count + 1
-      } else if( (x %% 4 == 0 && (x %/% 4 %% 2 == 1)) && ((x-2)%%3 == 0))
-      {
-        x <- (x-2) / 3
-        count <- count + 2
+        x <- x - 1
       } else
       {
         x <- x / 2
@@ -33,4 +28,13 @@ cal <- function(x)
   return(count)
 }
 
-cat(cal(x))
+dab <- cal(x)
+cat(dab)
+
+result <- NA
+for(i in 1:100)
+{
+  result[i] <- cal(i)
+}
+result
+cal(453421)
