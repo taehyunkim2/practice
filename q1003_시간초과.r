@@ -1,34 +1,24 @@
-input <- scan("stdin")
-input <- as.numeric(input)
+options(scipen = 100)
+fp <- file("stdin", "r")
+input <- scan(file=fp, what=numeric(0), n=2000000)
+
 testcase <- input[1]
 input <- input[-1]
 
-count_1 <<- 0
-count_0 <<- 0
-
-fibonacci <- function(x)
+fibo <- function(num)
 {
-  if(x == 1)
+  fb <- c(1, 0)
+  if(num != 0)
   {
-    count_1 <<- count_1 + 1
-    return()
-  } else if(x == 0)
-  {
-    count_0 <<- count_0 + 1
-    return()
+    for(i in 3:(num+2))
+    {
+      fb[i] <- fb[i-1] + fb[i-2]
+    }
   }
-  fibonacci(x-1)
-  fibonacci(x-2)
-  return()
+  cat(paste0(fb[num+1], " ", fb[num+2]))
 }
 
-result <- NA
 for(i in 1:testcase)
 {
-  fibonacci(input[i])
-  result[i] <- paste0(count_0, " ", count_1)
-  count_1 <<- 0
-  count_0 <<- 0
+  fibo(input[i])
 }
-
-cat(result, sep="\n")
